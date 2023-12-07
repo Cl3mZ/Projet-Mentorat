@@ -24,17 +24,15 @@ def accueil():
 
 
 
-
-
 ########################################################
 #Page web Eleve, Info, demande d'aide, devenir mentort.#
 ########################################################
 
 
-#Affiche la page acceuil privée sur connexion d'un élève
-@app.route("/eleve/acceuil")
-def eleve_acceuil():
-    return render_template("eleve_acceuil.html")
+#Affiche la page accueil privée sur connexion d'un élève
+@app.route("/eleve/accueil")
+def eleve_accueil():
+    return render_template("eleve_accueil.html")
 
 
 #Affiche la page info 
@@ -62,9 +60,9 @@ def eleve_devenirMentort():
 
 
 #Affiche la page acceuil privée sur connexion d'un élève
-@app.route("/mentort/acceuil")
-def mentort_acceuil():
-    return render_template("eleve_acceuil.html")
+@app.route("/mentort/accueil")
+def mentort_accueil():
+    return render_template("eleve_accueil.html")
 
 
 #Affiche la page info 
@@ -132,7 +130,7 @@ def register2():
     
     
     bdd.ajouter_personne(nom_utilisateur,prenom_utilisateur, email, mot_de_passe)
-    return redirect("/eleve/acceuil")
+    return redirect("/eleve/accueil")
 
 
 

@@ -27,7 +27,6 @@ class Bdd:
     def tester_email(self,email_tester):
         email = bdd.recuperer_email()
         for element in email:
-            print(element)
             if email_tester == element:
                 return True
         return False
