@@ -51,7 +51,7 @@ def eleve_aide():
 
 #Affiche la page de demande pour devenir mentort
 @app.route("/eleve/devenirMentort")
-def eleve_devnirMentort():
+def eleve_devenirMentort():
     pass
 
 
@@ -99,6 +99,8 @@ def login():
 
 #Route non visible pour réaliser les tests.
 @app.route("/login2")
+def login2():
+    pass
 
 
 #Fonctionnalité pour pouvoir ce register
@@ -110,7 +112,7 @@ def register():
 
 #Route non visible pour réaliser les tests.
 @app.route("/register1", methods=["POST"])
-def register1():
+def register2():
 
     nom_utilisateur = request.form["nom"]
     prenom_utilisateur = request.form["prenom"]
