@@ -111,7 +111,7 @@ def register():
 
 
 #Route non visible pour réaliser les tests.
-@app.route("/register1", methods=["POST"])
+@app.route("/register2", methods=["POST"])
 def register2():
 
     nom_utilisateur = request.form["nom"]

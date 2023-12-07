@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="static/css/register_login.css" rel="stylesheet">
+</head>
+<body>
+    <form class="register" action="/register2" method="POST">
+        <h1>Créer un compte Mentorat :</h1>
+        <h2>Veuillez remplir ce formulaire pour vous créer un compte.</h2>
+    
+        <label class="label_form"><b>Nom</b></label>
+        <input type="text" placeholder="Nom" name="nom" id="input" required>
+
+        <label class="label_form"><b>Prenom</b></label>
+        <input type="text" placeholder="Prénom" name="prenom" id="input" required>
+
+        <label class="label_form"><b>Email</b></label>
+        <input type="email" placeholder="Email" name="email" id="input" required>
+
+        <label class="label_form"><b>Mot De Passe</b></label>
+        <input type="password" placeholder="MDP" name="password" pattern="^(?=.*[A-Z])(?=.*\d).{8,}$" title="Le mot de passe doit contenir au moins une majuscule, un chiffre et être d'au moins 8 caractères" required>
+        
+        <label class="label_form"><b>Comfirmation du Mot De Passe</b></label>
+        <input type="password" placeholder="Comfirmation MDP" name="comfirm_password" id="input" required>
+
+        {% with messages = get_flashed_messages() %}
+                <ul>
+                {% for message in messages %}
+                <li class="erreur_register">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endwith %}     
+
+        <p><input type="submit" value="Créer le compte" /></p>
+
+        <p class="liens" >Vous avez déja un compte ? <a href="login">Connectez vous</a>.</p>
+    </form>
+</body>
+</html>

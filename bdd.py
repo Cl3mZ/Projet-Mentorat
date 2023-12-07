@@ -1,9 +1,3 @@
-"""Application web dynamique Bonjour
-
-Ce tutoriel présente le framework (cadriciel) Flask qui permet de réaliser
-des applications web dynamiques relativement simplement.
-"""
-
 import sqlite3
 
 
@@ -30,6 +24,14 @@ class Bdd:
         connexion.close()
         return email
     
+    def tester_email(self,email_tester):
+        email = bdd.recuperer_email()
+        for element in email:
+            print(element)
+            if email_tester == element:
+                return True
+        return False
+
 
     def ajouter_personne(self, nom, prenom, email, password):
         connexion = sqlite3.connect(self.chemin_bdd)
@@ -42,13 +44,7 @@ class Bdd:
         connexion.close()
     
 
-    def tester_email(self,email_tester):
-        email = bdd.recuperer_email()
-        for element in email:
-            print(element)
-            if email_tester == element:
-                return True
-        return False
+
 
 
 bdd = Bdd("bdd/BDD_Mentorat")

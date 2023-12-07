@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="static/css/register_login.css" rel="stylesheet">
+</head>
+<body>
+    <form class="register" action="/message_bienvenue" method="POST">
+        <h1>Ce connecter a votre compte Mentorat :</h1>
+        <h2>Veuillez remplir ce formulaire pour accéder a votre compte.</h2>
+    
+        <label class="label_form"><b>Email</b></label>
+        <input type="email" placeholder="Email" name="email" id="input" required>
+
+        <label class="label_form"><b>Mot De Passe</b></label>
+        <input type="password" placeholder="MDP" name="password" id="input" required>
+
+        <input type="submit" value="Se connecter" />
+        
+        <p class="liens" >Vous n'avez pas de compte ? <a href="register">Créer en un</a>.</p>
+    </form>
+</body>
+</html>
