@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    color: rgb(68, 45, 45);
+    margin-left: 2%;
+}
+
+p {
+    color: #666;
+    position: relative;
+}
+
+.box {
+    background-color: #350c0b;
+    color: #ffffff;
+    padding: 7%;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+}
+
+.informations {
+    background-color: #350c0b;
+    color:aliceblue ;
+    padding: 10px 20px;
+    font-size: 150%;
+    cursor: pointer;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 15%;
+    height: 25%;
+    text-decoration: none; 
+    display: inline-block;
+    border: none;
+    text-align:left;
+}
+.informations:hover {
+    background-color: aliceblue;
+    color: #350c0b;
+}
+.demande-aide{
+    background-color: #350c0b;
+    color:aliceblue ;
+    padding: 10px 20px;
+    font-size: 150%;
+    cursor: pointer;
+    position: absolute;
+    top: 0; 
+    left: 15%;
+    width: 15%;
+    height: 25%;
+    border: none;
+    text-decoration: none; 
+    display: inline-block;
+    text-align:left;
+}
+.demande-aide:hover {
+    background-color: aliceblue;
+    color: #350c0b;
+}
+.devenir-mentor{
+    background-color: #350c0b;
+    color:aliceblue ;
+    padding: 10px 20px;
+    font-size: 150%;
+    cursor: pointer;
+    position: absolute;
+    top: 0; 
+    left: 30%;
+    width: 15%;
+    height: 25%;
+    border: none;
+    text-decoration: none; 
+    display: inline-block;
+    text-align:left;
+}
+.devenir-mentor:hover {
+    background-color: aliceblue;
+    color: #350c0b;
+}
