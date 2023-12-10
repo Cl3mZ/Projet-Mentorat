@@ -17,6 +17,14 @@
         <input type="password" placeholder="MDP" name="password" id="input" required>
 
         <input type="submit" value="Se connecter" />
+
+        {% with messages = get_flashed_messages() %}
+                <ul>
+                {% for message in messages %}
+                <li class="erreur_login">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endwith %}     
         
         <p class="liens" >Vous n'avez pas de compte ? <a href="register">Créer en un</a>.</p>
     </form>

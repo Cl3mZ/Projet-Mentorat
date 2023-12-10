@@ -101,10 +101,13 @@ def login2():
     email = request.form["email"]
     mot_de_passe = request.form["password"]
 
-    if bdd.tester_email((email,)) == True:
-        if bdd.tester_mdp((mot_de_passe,), (email,)) == True:
-            return redirect()
+    flash(bdd.tester_email("eliot.pechadre@gmail.com",))
 
+    if bdd.tester_email((email,)) == True:  #renvoie False mais passe quand meme
+        if bdd.tester_mdp((mot_de_passe,), (email,)) == True: #renvoie None 
+            return redirect("/eleve/acceuil.html")
+        return redirect("/login")
+    return redirect("/login")
 
 #Fonctionnalité pour pouvoir ce register
 @app.route("/register")
