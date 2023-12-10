@@ -24,7 +24,9 @@ class Bdd:
         connexion.close()
         return email
     
-    def tester_email(self,email_tester):
+    
+    #Pour s'enregistrer on regarde si l'email est deja presente dans la base de donnée, return True ou False
+    def tester_email(self, email_tester):
         email = bdd.recuperer_email()
         for element in email:
             if email_tester == element:
@@ -32,15 +34,35 @@ class Bdd:
         return False
 
 
+    def tester_mdp(self, mdp_tester, email):
+        connexion = sqlite3.connect(self.chemin_bdd)
+        curseur = connexion.cursor()
+        requete_sql = f"""
+            SELECT Password
+            FROM Personnes
+            WHERE email = "{email}";"""
+        resultat = curseur.execute(requete_sql)
+        mdp = resultat.fetchall()
+        connexion.close()
+
+        if mdp == mdp_tester:
+            return True
+        return None
+
+
     def ajouter_personne(self, nom, prenom, email, password):
         connexion = sqlite3.connect(self.chemin_bdd)
         curseur = connexion.cursor()
         requete_sql = f"""
-            INSERT INTO Personnes (Nom, Prenom, Email, Password)
-            VALUES("{nom}","{prenom}","{email}","{password}");"""
+            INSERT INTO Personnes (Nom, Prenom, Email, Password, id_permission)
+            VALUES("{nom}","{prenom}","{email}","{password}", "1");"""
         curseur.execute(requete_sql)
         connexion.commit()
         connexion.close()
+    
+    def passer_mentort(self):
+        connexion = sqlite3.connect(self.chemin_bdd)
+        pass
     
 
 

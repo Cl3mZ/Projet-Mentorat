@@ -28,7 +28,12 @@ input[type=submit]{
     background: rgba(6, 46, 221, 0.365);
 }
 
-.register{
+input[type=submit]:hover {
+    background: rgba(6, 45, 221, 0.199);
+}
+
+
+.register_login{
     margin-left: 30%;
     margin-right: 30%;
     background-color: rgba(185, 184, 184, 0.300);
@@ -59,3 +64,5 @@ h2{
     padding-top: 15px;
     text-align: center;
 }
+
+

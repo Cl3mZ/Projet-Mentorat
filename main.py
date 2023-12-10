@@ -16,10 +16,10 @@ app.secret_key = b"Phr@s3_5up3R#s3Kr3//"
 bdd = Bdd("bdd/BDD_Mentorat")
 
 
-# Création d'une fonction accueil() associée à l'URL "/"
+# Création d'une fonction acceuil() associée à l'URL "/"
 # Affiche la page acceuil publique sans besoin de connexion.
 @app.route("/")
-def accueil():
+def acceuil():
     return render_template("acceuil.html")
 
 
@@ -30,9 +30,9 @@ def accueil():
 
 
 #Affiche la page accueil privée sur connexion d'un élève
-@app.route("/eleve/accueil")
-def eleve_accueil():
-    return render_template("eleve_accueil.html")
+@app.route("/eleve/acceuil")
+def eleve_acceuil():
+    return render_template("eleve_acceuil.html")
 
 
 #Affiche la page info 
@@ -60,9 +60,9 @@ def eleve_devenirMentort():
 
 
 #Affiche la page acceuil privée sur connexion d'un élève
-@app.route("/mentort/accueil")
-def mentort_accueil():
-    return render_template("eleve_accueil.html")
+@app.route("/mentort/acceuil")
+def mentort_acceuil():
+    return render_template("eleve_acceuil.html")
 
 
 #Affiche la page info 
@@ -96,9 +96,14 @@ def login():
 
 
 #Route non visible pour réaliser les tests.
-@app.route("/login2")
+@app.route("/login2", methods = ["POST"])
 def login2():
-    pass
+    email = request.form["email"]
+    mot_de_passe = request.form["password"]
+
+    if bdd.tester_email((email,)) == True:
+        if bdd.tester_mdp((mot_de_passe,), (email,)) == True:
+            return redirect()
 
 
 #Fonctionnalité pour pouvoir ce register
@@ -128,9 +133,9 @@ def register2():
         flash("Erreur : Les mots de passe ne correspondent pas.")
         return redirect("/register")
     
-    
-    bdd.ajouter_personne(nom_utilisateur,prenom_utilisateur, email, mot_de_passe)
-    return redirect("/eleve/accueil")
+    #Si tous les tests sont bon, ajoute une personne dans la bdd et renvoie vers la page /eleve/acceuil 
+    bdd.ajouter_personne(nom_utilisateur, prenom_utilisateur, email, mot_de_passe)
+    return redirect("/eleve/acceuil")
 
 
 
