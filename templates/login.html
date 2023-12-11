@@ -16,16 +16,17 @@
         <label class="label_form"><b>Mot De Passe</b></label>
         <input type="password" placeholder="MDP" name="password" id="input" required>
 
-        <input type="submit" value="Se connecter" />
-
+       
         {% with messages = get_flashed_messages() %}
                 <ul>
                 {% for message in messages %}
-                <li class="erreur_login">{{ message }}</li>
+                <li class="erreur_register_login">{{ message }}</li>
                 {% endfor %}
             </ul>
-        {% endwith %}     
-        
+        {% endwith %}
+
+        <input type="submit" value="Se connecter" />
+
         <p class="liens" >Vous n'avez pas de compte ? <a href="register">Créer en un</a>.</p>
     </form>
 </body>

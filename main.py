@@ -101,12 +101,11 @@ def login2():
     email = request.form["email"]
     mot_de_passe = request.form["password"]
 
-    flash(bdd.tester_email("eliot.pechadre@gmail.com",))
-
-    if bdd.tester_email((email,)) == True:  #renvoie False mais passe quand meme
-        if bdd.tester_mdp((mot_de_passe,), (email,)) == True: #renvoie None 
-            return redirect("/eleve/acceuil.html")
-        return redirect("/login")
+    if bdd.tester_email((email,)) == True :  
+        if bdd.tester_mdp((mot_de_passe,), email) == True:
+            return redirect("/eleve/acceuil")
+        
+    flash("Erreur lors de l'enregistrement")
     return redirect("/login")
 
 #Fonctionnalité pour pouvoir ce register
@@ -128,6 +127,7 @@ def register2():
 
     #Test pour les mails, il ne faut pas quelle soitr deja presente dans la base de donné lorsq de la création du compte.
     if bdd.tester_email((email,)) == True:
+        print(bdd.tester_email((email,)))
         flash("Erreur : L'email est déjà utiliser pour un compte.")
         return redirect("/register")
 

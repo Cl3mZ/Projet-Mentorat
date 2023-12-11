@@ -58,18 +58,13 @@ h2{
     text-align: center;
 }
 
-.erreur_register{
+.erreur_register_login{
     color: brown;
     list-style-type: none;
     padding-top: 15px;
     text-align: center;
 }
-.erreur_login{
-    color: brown;
-    list-style-type: none;
-    padding-top: 15px;
-    text-align: center;
-}
+
 
 
 

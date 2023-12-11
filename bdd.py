@@ -13,6 +13,7 @@ class Bdd:
         self.chemin_bdd = chemin_bdd
 
 
+    #Récuperer tout les email de la bdd
     def recuperer_email(self):
         connexion = sqlite3.connect(self.chemin_bdd)
         curseur = connexion.cursor()
@@ -24,8 +25,8 @@ class Bdd:
         connexion.close()
         return email
     
-    
-    #Pour s'enregistrer on regarde si l'email est deja presente dans la base de donnée, return True ou False
+
+    #Pour s'enregistrer on regarde si l'email est deja presente dans la base de donnée, return True si l'email est deja presente ou False sinon
     def tester_email(self, email_tester):
         email = bdd.recuperer_email()
         for element in email:
@@ -34,22 +35,25 @@ class Bdd:
         return False
 
 
+    #Methode pour tester un mdp 
     def tester_mdp(self, mdp_tester, email):
         connexion = sqlite3.connect(self.chemin_bdd)
         curseur = connexion.cursor()
         requete_sql = f"""
             SELECT Password
             FROM Personnes
-            WHERE email = "{email}";"""
+            WHERE Email = "{email}";"""
         resultat = curseur.execute(requete_sql)
         mdp = resultat.fetchall()
         connexion.close()
+        print(mdp, mdp_tester)
 
-        if mdp == mdp_tester:
+        if mdp[0] == mdp_tester:
             return True
         return None
 
 
+    #Méthode pour ajouter une personne dans la bdd
     def ajouter_personne(self, nom, prenom, email, password):
         connexion = sqlite3.connect(self.chemin_bdd)
         curseur = connexion.cursor()
@@ -60,6 +64,10 @@ class Bdd:
         connexion.commit()
         connexion.close()
     
+
+    def recuperer_perm(self):
+        
+
     def passer_mentort(self):
         connexion = sqlite3.connect(self.chemin_bdd)
         pass
