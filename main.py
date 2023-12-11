@@ -16,23 +16,23 @@ app.secret_key = b"Phr@s3_5up3R#s3Kr3//"
 bdd = Bdd("bdd/BDD_Mentorat")
 
 
-# Création d'une fonction acceuil() associée à l'URL "/"
-# Affiche la page acceuil publique sans besoin de connexion.
+# Création d'une fonction accueil() associée à l'URL "/"
+# Affiche la page accueil publique sans besoin de connexion.
 @app.route("/")
-def acceuil():
-    return render_template("acceuil.html")
+def accueil():
+    return render_template("accueil.html")
 
 
 
 ########################################################
-#Page web Eleve, Info, demande d'aide, devenir mentort.#
+#Page web Eleve, Info, demande d'aide, devenir mentor.#
 ########################################################
 
 
 #Affiche la page accueil privée sur connexion d'un élève
-@app.route("/eleve/acceuil")
-def eleve_acceuil():
-    return render_template("eleve_acceuil.html")
+@app.route("/eleve/accueil")
+def eleve_accueil():
+    return render_template("eleve_accueil.html")
 
 
 #Affiche la page info 
@@ -47,39 +47,39 @@ def eleve_aide():
     pass
 
 
-#Affiche la page de demande pour devenir mentort
-@app.route("/eleve/devenirMentort")
-def eleve_devenirMentort():
+#Affiche la page de demande pour devenir mentor
+@app.route("/eleve/devenirMentor")
+def eleve_devenirMentor():
     pass
 
 
 
 #########################################################
-#Page web Mentort, Info, demande d'aide, aider un élève.#
+#Page web Mentor, Info, demande d'aide, aider un élève.#
 #########################################################
 
 
-#Affiche la page acceuil privée sur connexion d'un élève
-@app.route("/mentort/acceuil")
-def mentort_acceuil():
-    return render_template("eleve_acceuil.html")
+#Affiche la page accueil privée sur connexion d'un élève
+@app.route("/mentor/accueil")
+def mentor_accueil():
+    return render_template("eleve_accueil.html")
 
 
 #Affiche la page info 
-@app.route("/mentort/infos")
-def mentort_infos():
+@app.route("/mentor/infos")
+def mentor_infos():
     pass
 
 
 #Affiche la page aide pour pouvoir demander de l'aide 
-@app.route("/mentort/aide")
-def mentort_aide():
+@app.route("/mentor/aide")
+def mentor_aide():
     pass
 
 
-#Affiche la page de demande pour devenir mentort
-@app.route("/mentort/aiderEleve")
-def mentort_aiderEleve():
+#Affiche la page de demande pour devenir mentor
+@app.route("/mentor/aiderEleve")
+def mentor_aiderEleve():
     pass
 
 
@@ -100,13 +100,22 @@ def login():
 def login2():
     email = request.form["email"]
     mot_de_passe = request.form["password"]
-
-    if bdd.tester_email((email,)) == True :  
+    #test pour l'email
+    if bdd.tester_email((email,)) == True : 
+        #test pour le mdp 
         if bdd.tester_mdp((mot_de_passe,), email) == True:
-            return redirect("/eleve/acceuil")
-        
+            
+            if bdd.recuperer_perm(email) == [(1,)]:
+                return redirect("/eleve/accueil")
+            if bdd.recuperer_perm(email) == [(2,)]:
+                return redirect("/mentor/accueil")
+            if bdd.recuperer_perm(email) == [(3,)]:
+                return redirect("/admin/accueil")
+            
     flash("Erreur lors de l'enregistrement")
     return redirect("/login")
+
+
 
 #Fonctionnalité pour pouvoir ce register
 @app.route("/register")
@@ -136,9 +145,9 @@ def register2():
         flash("Erreur : Les mots de passe ne correspondent pas.")
         return redirect("/register")
     
-    #Si tous les tests sont bon, ajoute une personne dans la bdd et renvoie vers la page /eleve/acceuil 
+    #Si tous les tests sont bon, ajoute une personne dans la bdd et renvoie vers la page /eleve/accueil
     bdd.ajouter_personne(nom_utilisateur, prenom_utilisateur, email, mot_de_passe)
-    return redirect("/eleve/acceuil")
+    return redirect("/eleve/accueil")
 
 
 

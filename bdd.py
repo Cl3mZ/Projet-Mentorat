@@ -46,8 +46,6 @@ class Bdd:
         resultat = curseur.execute(requete_sql)
         mdp = resultat.fetchall()
         connexion.close()
-        print(mdp, mdp_tester)
-
         if mdp[0] == mdp_tester:
             return True
         return None
@@ -65,10 +63,22 @@ class Bdd:
         connexion.close()
     
 
-    def recuperer_perm(self):
+    def recuperer_perm(self, email):
+        print(email)
+        connexion = sqlite3.connect(self.chemin_bdd)
+        curseur = connexion.cursor()
+        requete_sql = f"""
+                    SELECT id_permission
+                    FROM Personnes
+                    WHERE Email = "{email}";"""
         
+        resultat = curseur.execute(requete_sql)
+        perms = resultat.fetchall()
+        connexion.close()
+        print(perms)
+        return perms
 
-    def passer_mentort(self):
+    def passer_mentor(self):
         connexion = sqlite3.connect(self.chemin_bdd)
         pass
     
