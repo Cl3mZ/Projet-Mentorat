@@ -17,7 +17,7 @@ p {
 .box {
     background-color: #350c0b;
     color: #ffffff;
-    padding: 25px;
+    padding: 4%;
     border-radius: 5px;
     margin-top: 20px; 
 }
@@ -50,4 +50,44 @@ p {
     color: #ffffff;
     padding: 20px;
     border-radius: 5px;
+}
+.register{
+    background-color: #350c0b;
+    color:aliceblue ;
+    padding: 10px 20px;
+    font-size: 150%;
+    cursor: pointer;
+    position: absolute;
+    top: 21.5%; 
+    left: 2%;
+    width: 15%;
+    height: 6.4%;
+    text-decoration: none; 
+    display: inline-block;
+    border: none;
+    text-align:center;
+}
+.register:hover {
+    background-color: aliceblue;
+    color: #350c0b;
+}
+.login{
+    background-color: #350c0b;
+    color:aliceblue ;
+    padding: 10px 20px;
+    font-size: 150%;
+    cursor: pointer;
+    position: absolute;
+    top: 21.5%; 
+    left: 25%;
+    width: 15%;
+    height: 6.4%;
+    text-decoration: none; 
+    display: inline-block;
+    border: none;
+    text-align:center;
+}
+.login:hover {
+    background-color: aliceblue;
+    color: #350c0b;
 }

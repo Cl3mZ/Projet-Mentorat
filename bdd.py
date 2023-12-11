@@ -66,7 +66,7 @@ class Bdd:
     
 
     def recuperer_perm(self):
-        
+        pass
 
     def passer_mentort(self):
         connexion = sqlite3.connect(self.chemin_bdd)

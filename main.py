@@ -38,19 +38,19 @@ def eleve_acceuil():
 #Affiche la page info 
 @app.route("/eleve/infos")
 def eleve_infos():
-    pass
+    return render_template("eleve_infos.html")
 
 
 #Affiche la page aide pour pouvoir demander de l'aide 
 @app.route("/eleve/aide")
 def eleve_aide():
-    pass
+    return render_template("eleve_aide.html")
 
 
 #Affiche la page de demande pour devenir mentort
 @app.route("/eleve/devenirMentort")
 def eleve_devenirMentort():
-    pass
+    return render_template("eleve_devenirMentort.html")
 
 
 
