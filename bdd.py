@@ -63,7 +63,7 @@ class Bdd:
         connexion.close()
     
 
-<<<<<<< HEAD
+
     def recuperer_perm(self, email):
         print(email)
         connexion = sqlite3.connect(self.chemin_bdd)
@@ -78,10 +78,7 @@ class Bdd:
         connexion.close()
         print(perms)
         return perms
-=======
-    def recuperer_perm(self):
-        pass
->>>>>>> 669e57108bf7bb9f7fa94bffbdedede5915e272e
+
 
     def passer_mentor(self):
         connexion = sqlite3.connect(self.chemin_bdd)
