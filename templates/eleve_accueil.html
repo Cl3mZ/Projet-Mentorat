@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil - Tutorat St André</title>
-    <link href="/static/css/eleve_accueil.css" rel="stylesheet">
+    <link href="../static/css/eleve_accueil.css" rel="stylesheet">
 </head>
 <body>
     <div class="box">
-        <a href="/eleve/infos" class="informations">Informations</a>
-        <a href="/eleve/aide" class="demande-aide">Demande d'aide</a>
-        <a href="/eleve/devenirMentort" class="devenir-mentor">Devenir Mentor</a>
+        <ul>
+            <li><a href="/eleve/devenirMentor" class="bandeau_gauche">Devenir Mentor</a></li>
+            <li><a href="/eleve/infos" class="bandeau_gauche">Informations</a></li>
+            <li><a href="/eleve/aide" class="bandeau_gauche">Demande d'aide</a></li>
+        </ul>
     </div>
     <h1>Bienvenue {{nom_utilisateur}} {{prenom_utilisateur}} sur le site du Tutorat St André</h1>
 </body>

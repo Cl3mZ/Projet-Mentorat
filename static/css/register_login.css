@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
 }
 
 
@@ -36,9 +37,9 @@ input[type=submit]:hover {
 
 
 .register_login{
-    padding-top: 0;
-    margin-left: 30%;
-    margin-right: 30%;
+    padding-bottom: 5px;  
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: rgba(185, 184, 184, 0.300);
 }
 
@@ -89,6 +90,7 @@ h2{
     font-size: large;
     background-color: #488ac7;
     padding: 50px;
+    margin: 0;
 }
 
 
