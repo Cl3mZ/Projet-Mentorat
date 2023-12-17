@@ -18,14 +18,33 @@ bdd = Bdd("bdd/BDD_Mentorat")
 
 # Création d'une fonction accueil() associée à l'URL "/"
 # Affiche la page accueil publique sans besoin de connexion.
+
+########################################################
+#Page web sans compte
+########################################################
 @app.route("/")
 def accueil():
     return render_template("accueil.html")
 
+@app.route("/imformation")
+def imformation():
+    return render_template("imformation.html")
+
+@app.route("/demandeAide")
+def demande_aide():
+    return render_template("demandeAide.html")
+
+@app.route("/devenirMentor")
+def devenir_mentor():
+    return render_template("devenirMentor.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 
 ########################################################
-#Page web Eleve, Info, demande d'aide, devenir mentor.#
+#Page web Eleve
 ########################################################
 
 
@@ -55,7 +74,7 @@ def eleve_devenirMentor():
 
 
 #########################################################
-#Page web Mentor, Info, demande d'aide, aider un élève.#
+#Page web Mentor
 #########################################################
 
 
@@ -145,7 +164,8 @@ def register2():
         flash("Erreur : Les mots de passe ne correspondent pas.")
         return redirect("/register")
     
-    #Si tous les tests sont bon, ajoute une personne dans la bdd et renvoie vers la page /eleve/accueil
+    #Si tous les tests sont bon, ajoute une personne dans la bdd et renvoie vers la page /eleve/accueil, 
+    #on considere qu'une personne qui creer sont compte est eleve
     bdd.ajouter_personne(nom_utilisateur, prenom_utilisateur, email, mot_de_passe)
     return redirect("/eleve/accueil")
 
