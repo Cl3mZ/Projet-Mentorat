@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin-top: 5%;
+}
+
+h1 {
+    color: rgb(68, 45, 45);
+}
+
+.demande-form {
+    width: 70%;
+    max-width: 400px;
+    margin: 5% auto;
+    background-color: #fff;
+    padding: 5%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 4%;
+}
+
+label {
+    display: block;
+    margin-bottom: 2%;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #350c0b;
+    color: #ffffff;
+    padding: 2% 4%;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #757474;
+}
