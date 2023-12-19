@@ -5,6 +5,45 @@ body {
 }
 
 
+
+.navBar{
+    cursor: pointer;
+    text-decoration: None;
+    color: rgb(255,255,255,0.7)
+}
+
+
+.navBarUl{
+    font-weight: 700;
+    font-size: large;
+    background-color: #488ac7;
+    padding: 50px;
+    margin: 0;
+}
+
+
+.liRight{
+    padding-left: 20px;
+    list-style-type: None;
+    float: right;
+    
+}
+
+.liLeft{
+    padding-left: 50px;
+    list-style-type: None;
+    display: inline-block;
+}
+
+
+.navBar:hover{
+    color: rgb(255,255,255,1)
+}
+
+
+
+
+
 input[type=text],input[type="email"],input[type="password"]{
     width: 100%;
     padding: 15px;
@@ -78,38 +117,5 @@ h2{
 
 
 
-
-.navBar{
-    cursor: pointer;
-    text-decoration: None;
-    color: white;
-}
-
-
-.navBarUl{
-    font-size: large;
-    background-color: #488ac7;
-    padding: 50px;
-    margin: 0;
-}
-
-
-.liRight{
-    padding-left: 20px;
-    list-style-type: None;
-    float: right;
-    
-}
-
-.liLeft{
-    padding-left: 50px;
-    list-style-type: None;
-    display: inline-block;
-}
-
-
-.navBar:hover{
-    color: black;
-}
 
 
