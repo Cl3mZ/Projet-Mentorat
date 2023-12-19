@@ -26,9 +26,9 @@ bdd = Bdd("bdd/BDD_Mentorat")
 def accueil():
     return render_template("accueil.html")
 
-@app.route("/imformation")
-def imformation():
-    return render_template("imformation.html")
+@app.route("/information")
+def information():
+    return render_template("information.html")
 
 @app.route("/demandeAide")
 def demande_aide():
@@ -169,7 +169,10 @@ def register2():
     bdd.ajouter_personne(nom_utilisateur, prenom_utilisateur, email, mot_de_passe)
     return redirect("/eleve/accueil")
 
-
+@app.route("/egg")
+def egg():
+    #easter egg
+    return render_template("easter_egg.html")
 
 
 # Lancement de l'application web et son serveur
