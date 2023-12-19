@@ -1,93 +1,39 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    text-align: center;
-    margin-top: 50px;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    color: rgb(68, 45, 45);
-}
-
-p {
-    color: #666;
-    position: relative;
-}
-
-.box {
-    background-color: #350c0b;
-    color: #ffffff;
-    padding: 4%;
-    border-radius: 5px;
-    margin-top: 20px; 
-}
-
-.box-register {
-    position: absolute;
-    margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 900px;
-    background-color: #662a28;
-    color: #ffffff;
-    padding: 25px;
-    border-radius: 5px;
-}
-.box-info {
-    position: absolute;
-    margin-top: 30px;
-    margin-left: 750px;
-    margin-right: 30px;
-    background-color: #661a17;
-    color: #ffffff;
-    padding: 25px;
-    border-radius: 5px;
-}
-.box-inscrire{
-    position: absolute;
-    margin-top: 350px;
-    margin-left: 180px;
-    background-color: #b8b8b8;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-}
-.register{
-    background-color: #350c0b;
-    color:aliceblue ;
-    padding: 10px 20px;
-    font-size: 150%;
+.navBar{
     cursor: pointer;
-    position: absolute;
-    top: 21.5%; 
-    left: 2%;
-    width: 15%;
-    height: 6.4%;
-    text-decoration: none; 
+    text-decoration: None;
+    color: white;
+}
+
+
+.navBarUl{
+    font-size: large;
+    background-color: #488ac7;
+    padding: 50px;
+    margin: 0;
+}
+
+
+.liRight{
+    padding-left: 20px;
+    list-style-type: None;
+    float: right;
+    
+}
+
+.liLeft{
+    padding-left: 50px;
+    list-style-type: None;
     display: inline-block;
-    border: none;
-    text-align:center;
 }
-.register:hover {
-    background-color: aliceblue;
-    color: #350c0b;
+
+
+.navBar:hover{
+    color: black;
 }
-.login{
-    background-color: #350c0b;
-    color:aliceblue ;
-    padding: 10px 20px;
-    font-size: 150%;
-    cursor: pointer;
-    position: absolute;
-    top: 21.5%; 
-    left: 25%;
-    width: 15%;
-    height: 6.4%;
-    text-decoration: none; 
-    display: inline-block;
-    border: none;
-    text-align:center;
-}
-.login:hover {
-    background-color: aliceblue;
-    color: #350c0b;
-}
+
