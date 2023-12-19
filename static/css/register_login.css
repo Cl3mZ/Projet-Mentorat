@@ -82,11 +82,12 @@ h2{
 .navBar{
     cursor: pointer;
     text-decoration: None;
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 
 .navBarUl{
+    font-weight: 900;
     font-size: large;
     background-color: #488ac7;
     padding: 50px;
@@ -109,7 +110,7 @@ h2{
 
 
 .navBar:hover{
-    color: black;
+    color: rgba(255, 255, 255, 1);
 }
 
 

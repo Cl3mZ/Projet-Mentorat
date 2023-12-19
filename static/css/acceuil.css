@@ -7,12 +7,13 @@ body {
 .navBar{
     cursor: pointer;
     text-decoration: None;
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 
 .navBarUl{
     font-size: large;
+    font-weight: 900;
     background-color: #488ac7;
     padding: 50px;
     margin: 0;
@@ -34,6 +35,8 @@ body {
 
 
 .navBar:hover{
-    color: black;
+    color: rgba(255, 255, 255, 1);
 }
+
+
 
