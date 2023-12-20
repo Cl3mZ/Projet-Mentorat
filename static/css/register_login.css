@@ -15,7 +15,7 @@ body {
 
 .navBarUl{
     font-weight: 700;
-    font-size: large;
+    font-size: x-large;
     background-color: #488ac7;
     padding: 50px;
     margin: 0;
@@ -76,7 +76,7 @@ input[type=submit]:hover {
 
 
 .register_login{
-    padding-bottom: 5px;  
+    padding-bottom: 5px;
     margin-left: 25%;
     margin-right: 25%;
     background-color: rgba(185, 184, 184, 0.300);
