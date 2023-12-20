@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: rgb(240,126,19,0.075)
 }
 
 
@@ -9,7 +10,8 @@ body {
 .navBar{
     cursor: pointer;
     text-decoration: None;
-    color: rgb(255,255,255,0.7)
+    color: rgb(255,255,255,0.7);
+    transition: color 0.3s;
 }
 
 
@@ -17,27 +19,35 @@ body {
     font-weight: 700;
     font-size: x-large;
     background-color: #488ac7;
-    padding: 50px;
+    padding: 0px 50px;
     margin: 0;
 }
 
 
 .liRight{
-    padding-left: 20px;
+    cursor: pointer;
+    padding: 35px 15px;
     list-style-type: None;
     float: right;
-    
+    transition: background-color 0.3s;
 }
 
 .liLeft{
-    padding-left: 50px;
+    cursor: pointer;
+    padding: 35px 15px;
     list-style-type: None;
     display: inline-block;
+    transition: background-color 0.3s;
+}
+
+
+.liLeft:hover, .liRight:hover {
+    background-color: #93c121;
 }
 
 
 .navBar:hover{
-    color: rgb(255,255,255,1)
+   color: rgb(255,255,255,1) 
 }
 
 
@@ -76,6 +86,8 @@ input[type=submit]:hover {
 
 
 .register_login{
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
+    border-radius: 20px;
     padding-bottom: 5px;
     margin-left: 25%;
     margin-right: 25%;
