@@ -1,7 +1,47 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
 }
+
+
+
+.navBar{
+    cursor: pointer;
+    text-decoration: None;
+    color: rgb(255,255,255,0.7)
+}
+
+
+.navBarUl{
+    font-weight: 700;
+    font-size: large;
+    background-color: #488ac7;
+    padding: 50px;
+    margin: 0;
+}
+
+
+.liRight{
+    padding-left: 20px;
+    list-style-type: None;
+    float: right;
+    
+}
+
+.liLeft{
+    padding-left: 50px;
+    list-style-type: None;
+    display: inline-block;
+}
+
+
+.navBar:hover{
+    color: rgb(255,255,255,1)
+}
+
+
+
 
 
 input[type=text],input[type="email"],input[type="password"]{
@@ -36,9 +76,9 @@ input[type=submit]:hover {
 
 
 .register_login{
-    padding-top: 0;
-    margin-left: 30%;
-    margin-right: 30%;
+    padding-bottom: 5px;  
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: rgba(185, 184, 184, 0.300);
 }
 
@@ -77,37 +117,5 @@ h2{
 
 
 
-
-.navBar{
-    cursor: pointer;
-    text-decoration: None;
-    color: white;
-}
-
-
-.navBarUl{
-    font-size: large;
-    background-color: #488ac7;
-    padding: 50px;
-}
-
-
-.liRight{
-    padding-left: 20px;
-    list-style-type: None;
-    float: right;
-    
-}
-
-.liLeft{
-    padding-left: 50px;
-    list-style-type: None;
-    display: inline-block;
-}
-
-
-.navBar:hover{
-    color: black;
-}
 
 
