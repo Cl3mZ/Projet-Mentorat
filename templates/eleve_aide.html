@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Demande D'aide - Tutorat St André</title>
+    <title>Demande D'aide - Mentorat St André</title>
     <link href="../static/css/eleve_aide.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Demande d'aide</h1>
     <form class="demande-form">
+        <h1>Demande d'aide</h1>
         <div class="form-group">
             <label for="classe">Classe :</label>
             <select id="classe" name="classe">
@@ -25,7 +25,25 @@
 
         <div class="form-group">
             <label for="matiere">Matière :</label>
-            <input type="text" id="matiere" name="matiere" placeholder="Entrez la matière">
+            <select id="matiere" name="matiere">
+                <option value="seconde">Maths</option>
+                <option value="premiere">Français</option>
+                <option value="terminale">Histoire-Geographie-EMC</option>
+                <option value="seconde">Anglais</option>
+                <option value="premiere">Espagnol</option>
+                <option value="terminale">Allemand</option>
+                <option value="seconde">Philosophie</option>
+                <option value="premiere">Physique-Chimie</option>
+                <option value="terminale">S.V.T</option>
+                <option value="terminale">SVT</option>
+                <option value="terminale">SVT</option>
+                <option value="terminale">SVT</option>
+                <option value="terminale">SVT</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact :</label>
+            <textarea id="contact" name="conact" placeholder="Entrez ici la maniere par laquelle voulez vous etre contacter par un Mentor (adresse mail de base )"rows="2"></textarea>
         </div>
 
         <div class="form-group">

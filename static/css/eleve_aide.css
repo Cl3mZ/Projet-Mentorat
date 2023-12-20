@@ -2,30 +2,29 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 8%;
 }
 
 h1 {
-    color: rgb(68, 45, 45);
+    color: #488AC7;
 }
 
 .demande-form {
-    width: 70%;
-    max-width: 400px;
+    max-width: 600px;
     margin: 5% auto;
     background-color: #fff;
     padding: 5%;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .form-group {
-    margin-bottom: 4%;
+    margin-bottom: 82;
 }
 
 label {
     display: block;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
 }
 
 select,
@@ -40,7 +39,7 @@ textarea {
 }
 
 button {
-    background-color: #350c0b;
+    background-color: #488AC7;
     color: #ffffff;
     padding: 2% 4%;
     font-size: 1em;
@@ -50,5 +49,5 @@ button {
 }
 
 button:hover {
-    background-color: #757474;
+    background-color: #dd6130;
 }
