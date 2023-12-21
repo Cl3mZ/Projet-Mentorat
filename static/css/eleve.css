@@ -52,14 +52,14 @@ body {
 
 
 
-h1 {
-    color: #488AC7;
-}
+
+
+
+
 
 .demande-form {
-    border-radius: 20px;
     max-width: 600px;
-    margin: 5% auto;
+    margin: 2% auto;
     background-color: #fff;
     padding: 5%;
     border-radius: 5px;
@@ -75,6 +75,8 @@ label {
     margin-bottom: 5%;
 }
 
+
+
 select,
 input,
 textarea {
@@ -86,6 +88,8 @@ textarea {
     box-sizing: border-box;
 }
 
+
+
 button {
     background-color: #488AC7;
     color: #ffffff;
@@ -96,6 +100,30 @@ button {
     cursor: pointer;
 }
 
+
 button:hover {
     background-color: #dd6130;
+}
+
+.txt{
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 21.44px;
+    margin-left: 20%;   
+    margin-right: 20%;
+    background-color: #fff;
+}
+
+h1{
+    color: #488AC7;
+    font-weight: 300;
+    margin: 0px 0px 20px;
+}
+
+h5{
+    margin-bottom: 0px;
+    line-height: 25px;
+    font-weight: 300;
+    font-size: 20px;
 }

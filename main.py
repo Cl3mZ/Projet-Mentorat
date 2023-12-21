@@ -24,6 +24,7 @@ bdd = Bdd("bdd/BDD_Mentorat")
 ########################################################
 @app.route("/")
 def accueil():
+    print(session)
     return render_template("accueil.html")
 
 @app.route("/information")
