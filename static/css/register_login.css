@@ -1,7 +1,57 @@
 body {
-    font-family: Arial;
-    color: rgba(0, 0, 0, 0.800);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(240,126,19,0.075)
 }
+
+
+
+.navBar{
+    cursor: pointer;
+    text-decoration: None;
+    color: rgb(255,255,255,0.7);
+    transition: color 0.3s;
+}
+
+
+.navBarUl{
+    font-weight: 700;
+    font-size: x-large;
+    background-color: #488ac7;
+    padding: 0px 50px;
+    margin: 0;
+}
+
+
+.liRight{
+    cursor: pointer;
+    padding: 35px 15px;
+    list-style-type: None;
+    float: right;
+    transition: background-color 0.3s;
+}
+
+.liLeft{
+    cursor: pointer;
+    padding: 35px 15px;
+    list-style-type: None;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+
+.liLeft:hover, .liRight:hover {
+    background-color: #93c121;
+}
+
+
+.navBar:hover{
+   color: rgb(255,255,255,1) 
+}
+
+
+
 
 
 input[type=text],input[type="email"],input[type="password"]{
@@ -16,6 +66,7 @@ input[type=text],input[type="email"],input[type="password"]{
     background: rgba(133, 133, 133, 0.365);
 }
 
+
 input[type=submit]{
     width: 100%;
     padding: 20px;
@@ -25,38 +76,46 @@ input[type=submit]{
     margin: 50px 0 0 0;
     border: none;
     border-radius: 25px;
-    background: rgba(6, 46, 221, 0.365);
+    background: rgba(72, 138, 199, 0.75);
 }
 
+
 input[type=submit]:hover {
-    background: rgba(6, 45, 221, 0.199);
+    background: rgba(72, 138, 199, 1);
 }
 
 
 .register_login{
-    margin-left: 30%;
-    margin-right: 30%;
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
+    border-radius: 20px;
+    padding-bottom: 5px;
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: rgba(185, 184, 184, 0.300);
-    border-radius: 25px;
 }
+
 
 h1{
     text-align: center;
     padding-top: 25px;
 }
 
+
 h2{
     text-align: center;
     padding-bottom: 25px;
 }
 
+
 .label_form{
     margin-left: 13px;
 }
 
+
 .liens{
     text-align: center;
 }
+
 
 .erreur_register_login{
     color: brown;
@@ -64,6 +123,10 @@ h2{
     padding-top: 15px;
     text-align: center;
 }
+
+
+
+
 
 
 

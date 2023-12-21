@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Demande D'aide - Mentorat St André</title>
+    <link href="../static/css/eleve_aide.css" rel="stylesheet">
+</head>
+<body>
+    <form class="demande-form">
+        <h1>Devenir Mentor</h1>
+        <div class="form-group">
+            <label for="classe">Classe :</label>
+            <select id="classe" name="classe">
+                <option value="seconde">Seconde Général</option>
+                <option value="premiere">Première Général</option>
+                <option value="terminale">Terminale Général</option>
+                <option value="seconde">Seconde Techno</option>
+                <option value="premiere">Première Techno</option>
+                <option value="terminale">Terminale Techno</option>
+                <option value="seconde">Seconde Pro</option>
+                <option value="premiere">Première Pro</option>
+                <option value="terminale">Terminale Pro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact :</label>
+            <textarea id="contact" name="conact" placeholder="Entrez ici la maniere par laquelle voulez vous etre contacter par un Mentor (adresse mail de base )"rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="specialite">Lettre de Motivation :</label>
+            <textarea id="specialite" name="specialite" 
+            placeholder="Veuillez préciser vos motivations pour devenir mentor. En assumant ce rôle, vous aurez une grande responsabilité, et vos actions sur le site seront scrutées de près."rows="20"></textarea>
+        </div>
+
+        <button type="submit">Envoyer</button>
+        <a href="/eleve/accueil"><button type="button">Revenir à l'accueil</button></a>
+    </form>
+    </form>
+</body>
+</html>
