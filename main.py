@@ -71,6 +71,11 @@ def eleve_aide():
 def eleve_devenirMentor():
     return render_template("eleve_devenirMentor.html")
 
+#Affiche la page de demande pour devenir mentort
+@app.route("/eleve/contact")
+def eleve_contact():
+    return render_template("eleve_contact.html")
+
 
 
 #########################################################
@@ -81,7 +86,7 @@ def eleve_devenirMentor():
 #Affiche la page accueil privée sur connexion d'un élève
 @app.route("/mentor/accueil")
 def mentor_accueil():
-    return render_template("eleve_accueil.html")
+    return render_template("mentor_accueil.html")
 
 
 #Affiche la page info 

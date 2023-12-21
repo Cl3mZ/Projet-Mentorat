@@ -8,6 +8,7 @@ body {
 
 
 .navBar{
+    padding: 35px 15px;
     cursor: pointer;
     text-decoration: None;
     color: rgb(255,255,255,0.7);
@@ -17,9 +18,8 @@ body {
 
 .navBarUl{
     font-weight: 700;
-    font-size: x-large;
+    font-size: large;
     background-color: #488ac7;
-    padding: 0px 50px;
     margin: 0;
 }
 
