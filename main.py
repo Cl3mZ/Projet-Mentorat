@@ -101,7 +101,14 @@ def mentor_aide():
 def mentor_aiderEleve():
     pass
 
+#########################################################
+#Page web Admin
+#########################################################
 
+#Affiche la page de demande pour devenir mentort
+@app.route("/admin/listeMentor")
+def listeMentor():
+    return render_template("admin_liste_mentor.html")
 
 #######################################
 #Systeme de connexion, login/register.#
