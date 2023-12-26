@@ -15,9 +15,10 @@ app.secret_key = b"Phr@s3_5up3R#s3Kr3//"
 # Création de l'objet pour accéder à la base de données SQLite du site Mentorat
 bdd = Bdd("bdd/BDD_Mentorat")
 
-
+global email_connexion
 # Création d'une fonction accueil() associée à l'URL "/"
 # Affiche la page accueil publique sans besoin de connexion.
+
 
 ########################################################
 #Page web sans compte
@@ -65,16 +66,34 @@ def eleve_infos():
 def eleve_aide():
     return render_template("eleve_aide.html")
 
-@app.route("/eleve/aide2" , methods = ["POST"])
+
+@app.route("/eleve/aide2", methods=["POST"])
 def eleve_aide2():
+    global email_connexion
     classe = request.form["classe"]
     matiere = request.form["matiere"]
     contact = request.form["contact"]
     infos_supp = request.form["specialite"]
-    print(classe, matiere, contact, infos_supp)
-    return render_template("eleve_aide.html")
 
+    # Récupérer l'id_personne de la session
+    id_personne = bdd.obtenir_id_personne_par_email(email_connexion)
+    
+    # Vérifier si les valeurs ne sont pas None avant d'appeler la méthode
+    if id_personne is not None:
+        id_classe = bdd.obtenir_id_classe_selon_nom(classe)
 
+        # Vérifier si les valeurs ne sont pas None avant d'appeler la méthode
+        if id_classe is not None and matiere is not None and contact is not None and infos_supp is not None:
+            # Appeler la méthode pour ajouter la demande d'aide à la base de données
+            bdd.nouvelle_demande_aide(id_personne, id_classe, matiere, contact, infos_supp)
+            
+            # Flash le message de succès
+            flash("La demande d'aide a été créée avec succès.", "success")
+            return render_template("eleve_aide.html")
+
+    # Si l'une des valeurs est None, flash un message d'erreur
+    flash("Erreur lors de la création de la demande d'aide.", "error")
+    return redirect("/eleve/aide")
 
 #Affiche la page de demande pour devenir mentort
 @app.route("/eleve/devenirMentor")
@@ -137,8 +156,10 @@ def login():
 
 
 #Route non visible pour réaliser les tests.
+
 @app.route("/login2", methods = ["POST"])
 def login2():
+    global email_connexion
     if request.method == "POST":
         
         email = request.form["email"]
@@ -150,6 +171,7 @@ def login2():
                 
                 session['email'] = email
                 print(session)
+                email_connexion = email
 
 
                 if bdd.recuperer_perm(email) == [(1,)]:

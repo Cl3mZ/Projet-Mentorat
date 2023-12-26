@@ -127,3 +127,10 @@ h5{
     font-weight: 300;
     font-size: 20px;
 }
+
+.erreur_aide_mentor{
+    color: brown;
+    list-style-type: none;
+    padding-top: 15px;
+    text-align: center;
+}

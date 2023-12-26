@@ -1,6 +1,7 @@
 import sqlite3
 
 
+
 class Bdd:
     """Classe pour faire le lien entre la base de données SQLite et le programme"""
 
@@ -90,13 +91,47 @@ class Bdd:
                 return True
         return False    
 
-
-    def nouvelle_demande_aide(self, classe, matiere, contact, infos_supp):
+    def obtenir_id_personne_par_email(self, email_connexion):
         connexion = sqlite3.connect(self.chemin_bdd)
         curseur = connexion.cursor()
         requete_sql = f"""
-            INSERT INTO Personnes ();"""
+            SELECT id_personne
+            FROM Personnes
+            WHERE Email = ?;
+        """
+        resultat = curseur.execute(requete_sql, (email_connexion,))
+        ligne_resultat = resultat.fetchone()
+        id_personne = ligne_resultat[0] if ligne_resultat else None
+        connexion.close()
+        return id_personne
+
+    def obtenir_id_classe_selon_nom(self, nom_classe):
+        connexion = sqlite3.connect(self.chemin_bdd)
+        curseur = connexion.cursor()
+        requete_sql = f"""
+            SELECT id_classe
+            FROM Classe
+            WHERE Classe = ?;
+        """
+        resultat = curseur.execute(requete_sql, (nom_classe,))
+        id_classe = resultat.fetchone()[0] if resultat.fetchone() else None
+        connexion.close()
+        return id_classe
+
+
+
+    def nouvelle_demande_aide(self, id_personne, id_classe, matiere, contact, informations):
+        connexion = sqlite3.connect(self.chemin_bdd)
+        curseur = connexion.cursor()
+
+        # Insérer une nouvelle demande d'aide avec les informations de l'utilisateur
+        requete_sql = f"""
+            INSERT INTO Aide (id_personne, id_classe, Matiere, Contact, Informations)
+            VALUES ({id_personne}, {id_classe}, "{matiere}", "{contact}", "{informations}");
+        """
         curseur.execute(requete_sql)
+
+        # Commit et fermeture de la connexion
         connexion.commit()
         connexion.close()
 

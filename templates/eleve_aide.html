@@ -54,6 +54,15 @@
             <label for="specialite">Informations Suplémentaires :</label>
             <textarea id="specialite" name="specialite" placeholder="Entrez le chapitre qui pose problème, un exercice spécifique où vous rencontrez des difficultés, ou une notion particulière que vous souhaitez aborder...."rows="6"></textarea>
         </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="erreur_aide_mentor">
+                    {% for message in messages %}
+                        <div class="erreur_aide_mentor">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
 
         <input type="submit" value="Envoyer" ></input>
 
