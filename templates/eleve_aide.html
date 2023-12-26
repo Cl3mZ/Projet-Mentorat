@@ -17,44 +17,37 @@
             <li class = "liRight"><a class = "navBar" href="/">Se déconnecter</a></li>
         </ul>
     </header>
-    <form class="demande-form">
+    <form class="demande-form" action="/eleve/aide2" method="POST">
         <h1>Demande d'aide</h1>
         <div class="form-group">
             <label for="classe">Classe :</label>
             <select id="classe" name="classe" aria-placeholder="coucou">
-                <option value="seconde">Seconde Général</option>
-                <option value="premiere">Première Général</option>
-                <option value="terminale">Terminale Général</option>
-                <option value="seconde">Seconde Techno</option>
-                <option value="premiere">Première Techno</option>
-                <option value="terminale">Terminale Techno</option>
-                <option value="seconde">Seconde Pro</option>
-                <option value="premiere">Première Pro</option>
-                <option value="terminale">Terminale Pro</option>
+                <option value="seconde">Seconde</option>
+                <option value="premiere">Première</option>
+                <option value="terminale">Terminale</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="matiere">Matière :</label>
             <select id="matiere" name="matiere">
-                <option value="seconde">Maths</option>
-                <option value="premiere">Français</option>
-                <option value="terminale">Histoire-Geographie-EMC</option>
-                <option value="seconde">Anglais</option>
-                <option value="premiere">Espagnol</option>
-                <option value="terminale">Allemand</option>
-                <option value="seconde">Philosophie</option>
-                <option value="premiere">Physique-Chimie</option>
-                <option value="terminale">S.V.T</option>
-                <option value="terminale">SVT</option>
-                <option value="terminale">SVT</option>
-                <option value="terminale">SVT</option>
-                <option value="terminale">SVT</option>
+                <option value="Maths">Maths</option>
+                <option value="Français">Français</option>
+                <option value="Histoire-Geographie-EMC">Histoire-Geographie-EMC</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="Allemand">Allemand</option>
+                <option value="Philosophie">Philosophie</option>
+                <option value="Physique-Chimie">Physique-Chimie</option>
+                <option value="SVT">SVT</option>
+                <option value="None">None</option>
+                <option value="None">None</option>
+
             </select>
         </div>
         <div class="form-group">
             <label for="contact">Contact :</label>
-            <textarea id="contact" name="conact" placeholder="Entrez ici la maniere par laquelle voulez vous etre contacter par un Mentor (adresse mail de base )"rows="2"></textarea>
+            <textarea id="contact" name="contact" placeholder="Entrez ici la maniere par laquelle voulez vous etre contacter par un Mentor (adresse mail de base )" rows="2"></textarea>
         </div>
 
         <div class="form-group">
@@ -62,9 +55,9 @@
             <textarea id="specialite" name="specialite" placeholder="Entrez le chapitre qui pose problème, un exercice spécifique où vous rencontrez des difficultés, ou une notion particulière que vous souhaitez aborder...."rows="6"></textarea>
         </div>
 
-        <button type="submit">Envoyer</button>
+        <input type="submit" value="Envoyer" ></input>
+
         <a href="/eleve/accueil"><button type="button">Revenir à l'accueil</button></a>
-    </form>
     </form>
 </body>
 </html>

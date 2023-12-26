@@ -90,7 +90,7 @@ textarea {
 
 
 
-button {
+input, button {
     background-color: #488AC7;
     color: #ffffff;
     padding: 2% 4%;
@@ -101,7 +101,7 @@ button {
 }
 
 
-button:hover {
+input:hover, button:hover {
     background-color: #dd6130;
 }
 

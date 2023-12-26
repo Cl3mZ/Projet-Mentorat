@@ -24,7 +24,6 @@ bdd = Bdd("bdd/BDD_Mentorat")
 ########################################################
 @app.route("/")
 def accueil():
-    print(session)
     return render_template("accueil.html")
 
 @app.route("/information")
@@ -65,6 +64,16 @@ def eleve_infos():
 @app.route("/eleve/aide")
 def eleve_aide():
     return render_template("eleve_aide.html")
+
+@app.route("/eleve/aide2" , methods = ["POST"])
+def eleve_aide2():
+    classe = request.form["classe"]
+    matiere = request.form["matiere"]
+    contact = request.form["contact"]
+    infos_supp = request.form["specialite"]
+    print(classe, matiere, contact, infos_supp)
+    return render_template("eleve_aide.html")
+
 
 
 #Affiche la page de demande pour devenir mentort
@@ -130,23 +139,31 @@ def login():
 #Route non visible pour réaliser les tests.
 @app.route("/login2", methods = ["POST"])
 def login2():
-    email = request.form["email"]
-    mot_de_passe = request.form["password"]
-    #test pour l'email
-    if bdd.tester_email((email,)) == True : 
-        #test pour le mdp 
-        if bdd.tester_mdp((mot_de_passe,), email) == True:
-            
-            if bdd.recuperer_perm(email) == [(1,)]:
-                return redirect("/eleve/accueil")
-            if bdd.recuperer_perm(email) == [(2,)]:
-                return redirect("/mentor/accueil")
-            if bdd.recuperer_perm(email) == [(3,)]:
-                return redirect("/admin/accueil")
-            
-    flash("Erreur lors de l'enregistrement")
-    return redirect("/login")
+    if request.method == "POST":
+        
+        email = request.form["email"]
+        mot_de_passe = request.form["password"]
+        #test pour l'email
+        if bdd.tester_email((email,)) == True : 
+            #test pour le mdp 
+            if bdd.tester_mdp((mot_de_passe,), email) == True:
+                
+                session['email'] = email
+                print(session)
 
+
+                if bdd.recuperer_perm(email) == [(1,)]:
+                    return redirect("/eleve/accueil")
+                if bdd.recuperer_perm(email) == [(2,)]:
+                    return redirect("/mentor/accueil")
+                if bdd.recuperer_perm(email) == [(3,)]:
+                    return redirect("/admin/accueil")
+                
+        flash("Erreur lors de l'enregistrement")
+        return redirect("/login")
+
+    else: 
+        return redirect("/login")
 
 
 #Fonctionnalité pour pouvoir ce register
@@ -168,7 +185,6 @@ def register2():
 
     #Test pour les mails, il ne faut pas quelle soitr deja presente dans la base de donné lorsq de la création du compte.
     if bdd.tester_email((email,)) == True:
-        print(bdd.tester_email((email,)))
         flash("Erreur : L'email est déjà utiliser pour un compte.")
         return redirect("/register")
 

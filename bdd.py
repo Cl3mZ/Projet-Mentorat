@@ -12,6 +12,10 @@ class Bdd:
         """
         self.chemin_bdd = chemin_bdd
 
+#################
+#    Getters    #
+#################
+        
 
     #Récuperer tout les email de la bdd
     def recuperer_email(self):
@@ -25,14 +29,25 @@ class Bdd:
         connexion.close()
         return email
     
+    #Récuperer les permissions d'une personne avec son email
+    def recuperer_perm(self, email):
+        connexion = sqlite3.connect(self.chemin_bdd)
+        curseur = connexion.cursor()
+        requete_sql = f"""
+                    SELECT id_permission
+                    FROM Personnes
+                    WHERE Email = "{email}";"""
+        
+        resultat = curseur.execute(requete_sql)
+        perms = resultat.fetchall()
+        connexion.close()
+        return perms
+    
 
-    #Pour s'enregistrer on regarde si l'email est deja presente dans la base de donnée, return True si l'email est deja presente ou False sinon
-    def tester_email(self, email_tester):
-        email = bdd.recuperer_email()
-        for element in email:
-            if email_tester == element:
-                return True
-        return False
+##################
+#    Méthodes    #
+##################
+    
 
 
     #Methode pour tester un mdp 
@@ -63,27 +78,29 @@ class Bdd:
         connexion.close()
     
 
-
-    def recuperer_perm(self, email):
-        print(email)
-        connexion = sqlite3.connect(self.chemin_bdd)
-        curseur = connexion.cursor()
-        requete_sql = f"""
-                    SELECT id_permission
-                    FROM Personnes
-                    WHERE Email = "{email}";"""
-        
-        resultat = curseur.execute(requete_sql)
-        perms = resultat.fetchall()
-        connexion.close()
-        print(perms)
-        return perms
-
-
     def passer_mentor(self):
         connexion = sqlite3.connect(self.chemin_bdd)
         pass
     
+    #Pour s'enregistrer on regarde si l'email est deja presente dans la base de donnée, return True si l'email est deja presente ou False sinon
+    def tester_email(self, email_tester):
+        email = bdd.recuperer_email()
+        for element in email:
+            if email_tester == element:
+                return True
+        return False    
+
+
+    def nouvelle_demande_aide(self, classe, matiere, contact, infos_supp):
+        connexion = sqlite3.connect(self.chemin_bdd)
+        curseur = connexion.cursor()
+        requete_sql = f"""
+            INSERT INTO Personnes ();"""
+        curseur.execute(requete_sql)
+        connexion.commit()
+        connexion.close()
+
+
 
 
 
