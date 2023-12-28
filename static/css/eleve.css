@@ -134,3 +134,10 @@ h5{
     padding-top: 15px;
     text-align: center;
 }
+.flash-messages{
+    color: green;
+    list-style-type: none;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 150%;
+}

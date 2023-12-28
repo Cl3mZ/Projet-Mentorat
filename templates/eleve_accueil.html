@@ -17,6 +17,15 @@
             <li class = "liRight"><a class = "navBar" href="/">Se déconnecter</a></li>
         </ul>
     </header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message success">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     <div class = "txt">
         <h1>Bienvenue sur le Portail du Mentorat du Lycée Saint-André</h1> 
         <h5>

@@ -52,8 +52,11 @@ def contact():
 #Affiche la page accueil privée sur connexion d'un élève
 @app.route("/eleve/accueil")
 def eleve_accueil():
-    return render_template("eleve_accueil.html")
+    # Récupérez les messages flash
+    messages = get_flashed_messages()
 
+    # Passez les messages à la template pour les afficher
+    return render_template("eleve_accueil.html", messages=messages)
 
 #Affiche la page info 
 @app.route("/eleve/infos")
@@ -70,6 +73,8 @@ def eleve_aide():
 @app.route("/eleve/aide2", methods=["POST"])
 def eleve_aide2():
     global email_connexion
+
+    # Récupérer les données du formulaire
     classe = request.form["classe"]
     matiere = request.form["matiere"]
     contact = request.form["contact"]
@@ -77,7 +82,7 @@ def eleve_aide2():
 
     # Récupérer l'id_personne de la session
     id_personne = bdd.obtenir_id_personne_par_email(email_connexion)
-    
+
     # Vérifier si les valeurs ne sont pas None avant d'appeler la méthode
     if id_personne is not None:
         id_classe = bdd.obtenir_id_classe_selon_nom(classe)
@@ -86,14 +91,15 @@ def eleve_aide2():
         if id_classe is not None and matiere is not None and contact is not None and infos_supp is not None:
             # Appeler la méthode pour ajouter la demande d'aide à la base de données
             bdd.nouvelle_demande_aide(id_personne, id_classe, matiere, contact, infos_supp)
-            
+
             # Flash le message de succès
             flash("La demande d'aide a été créée avec succès.", "success")
-            return render_template("eleve_aide.html")
+            return render_template("eleve_accueil.html")
 
     # Si l'une des valeurs est None, flash un message d'erreur
     flash("Erreur lors de la création de la demande d'aide.", "error")
     return redirect("/eleve/aide")
+
 
 #Affiche la page de demande pour devenir mentort
 @app.route("/eleve/devenirMentor")

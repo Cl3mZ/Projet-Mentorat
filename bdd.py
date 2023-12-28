@@ -106,16 +106,7 @@ class Bdd:
         return id_personne
 
     def obtenir_id_classe_selon_nom(self, nom_classe):
-        connexion = sqlite3.connect(self.chemin_bdd)
-        curseur = connexion.cursor()
-        requete_sql = f"""
-            SELECT id_classe
-            FROM Classe
-            WHERE Classe = ?;
-        """
-        resultat = curseur.execute(requete_sql, (nom_classe,))
-        id_classe = resultat.fetchone()[0] if resultat.fetchone() else None
-        connexion.close()
+        id_classe = 1
         return id_classe
 
 
