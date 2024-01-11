@@ -4,7 +4,7 @@
 from flask import *
 from datetime import datetime
 from werkzeug.utils import secure_filename
-from bdd import *
+from bdd import Bdd
 ###########################
 
 
@@ -27,18 +27,22 @@ global email_connexion
 def accueil():
     return render_template("accueil.html")
 
+# Page d'informations publiques
 @app.route("/information")
 def information():
     return render_template("information.html")
 
+# Page pour faire une demande d'aide publique
 @app.route("/demandeAide")
 def demande_aide():
     return render_template("demandeAide.html")
 
+# Page pour devenir mentor publique
 @app.route("/devenirMentor")
 def devenir_mentor():
     return render_template("devenirMentor.html")
 
+# Page de contact publique
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
@@ -49,68 +53,52 @@ def contact():
 ########################################################
 
 
-#Affiche la page accueil privée sur connexion d'un élève
 @app.route("/eleve/accueil")
 def eleve_accueil():
-    # Récupérez les messages flash
+    # Récupérer les messages flash
     messages = get_flashed_messages()
 
     # Passez les messages à la template pour les afficher
     return render_template("eleve_accueil.html", messages=messages)
 
-#Affiche la page info 
+# Page d'informations privée pour les élèves
 @app.route("/eleve/infos")
 def eleve_infos():
     return render_template("eleve_infos.html")
 
-
-#Affiche la page aide pour pouvoir demander de l'aide 
+# Page pour demander de l'aide pour les élèves
 @app.route("/eleve/aide")
 def eleve_aide():
     return render_template("eleve_aide.html")
 
-
+# Traitement du formulaire pour demander de l'aide
 @app.route("/eleve/aide2", methods=["POST"])
 def eleve_aide2():
     global email_connexion
+    if request.method == "POST":
+        matiere = request.form["matiere"]
+        contact = request.form["contact"]
+        infos_supp = request.form["specialite"]
 
-    # Récupérer les données du formulaire
-    classe = request.form["classe"]
-    matiere = request.form["matiere"]
-    contact = request.form["contact"]
-    infos_supp = request.form["specialite"]
-
-    # Récupérer l'id_personne de la session
-    id_personne = bdd.obtenir_id_personne_par_email(email_connexion)
-
-    # Vérifier si les valeurs ne sont pas None avant d'appeler la méthode
-    if id_personne is not None:
-        id_classe = bdd.obtenir_id_classe_selon_nom(classe)
-
-        # Vérifier si les valeurs ne sont pas None avant d'appeler la méthode
-        if id_classe is not None and matiere is not None and contact is not None and infos_supp is not None:
+        if matiere is not None and contact is not None and infos_supp is not None:
             # Appeler la méthode pour ajouter la demande d'aide à la base de données
-            bdd.nouvelle_demande_aide(id_personne, id_classe, matiere, contact, infos_supp)
-
-            # Flash le message de succès
+            bdd.nouvelle_demande_aide(email_connexion, matiere, contact, infos_supp)
+            
             flash("La demande d'aide a été créée avec succès.", "success")
             return render_template("eleve_accueil.html")
 
-    # Si l'une des valeurs est None, flash un message d'erreur
-    flash("Erreur lors de la création de la demande d'aide.", "error")
-    return redirect("/eleve/aide")
+        flash("Erreur lors de la création de la demande d'aide.", "error")
+        return redirect("/eleve/aide")
 
-
-#Affiche la page de demande pour devenir mentort
+# Page pour devenir mentor pour les élèves
 @app.route("/eleve/devenirMentor")
 def eleve_devenirMentor():
     return render_template("eleve_devenirMentor.html")
 
-#Affiche la page de demande pour devenir mentort
+# Page de contact pour les élèves
 @app.route("/eleve/contact")
 def eleve_contact():
     return render_template("eleve_contact.html")
-
 
 
 #########################################################
@@ -160,75 +148,62 @@ def listeMentor():
 def login():
     return render_template("login.html")
 
-
-#Route non visible pour réaliser les tests.
-
-@app.route("/login2", methods = ["POST"])
+# Traitement du formulaire de connexion
+@app.route("/login2", methods=["POST"])
 def login2():
     global email_connexion
     if request.method == "POST":
-        
         email = request.form["email"]
         mot_de_passe = request.form["password"]
-        #test pour l'email
-        if bdd.tester_email((email,)) == True : 
-            #test pour le mdp 
+
+        if bdd.tester_email((email,)) == True:
             if bdd.tester_mdp((mot_de_passe,), email) == True:
-                
                 session['email'] = email
-                print(session)
                 email_connexion = email
 
-
-                if bdd.recuperer_perm(email) == [(1,)]:
+                if bdd.recuperer_perm(email) == [('eleve',)]:
                     return redirect("/eleve/accueil")
-                if bdd.recuperer_perm(email) == [(2,)]:
+                if bdd.recuperer_perm(email) == [('mentort',)]:
                     return redirect("/mentor/accueil")
-                if bdd.recuperer_perm(email) == [(3,)]:
+                if bdd.recuperer_perm(email) == [('admin',)]:
                     return redirect("/admin/accueil")
-                
+            
         flash("Erreur lors de l'enregistrement")
         return redirect("/login")
-
-    else: 
+    else:
         return redirect("/login")
 
-
-#Fonctionnalité pour pouvoir ce register
+# Page pour s'enregistrer
 @app.route("/register")
 def register():
-    #Formulaire d'enregistrement
     return render_template("register.html")
 
-
-#Route non visible pour réaliser les tests.
+# Traitement du formulaire d'enregistrement
 @app.route("/register2", methods=["POST"])
 def register2():
-
     nom_utilisateur = request.form["nom"]
     prenom_utilisateur = request.form["prenom"]
+    nom_classes = request.form["classe"]
     email = request.form["email"]
     mot_de_passe = request.form["password"]
     c_mot_de_passe = request.form["comfirm_password"]
 
-    #Test pour les mails, il ne faut pas quelle soitr deja presente dans la base de donné lorsq de la création du compte.
     if bdd.tester_email((email,)) == True:
-        flash("Erreur : L'email est déjà utiliser pour un compte.")
+        flash("Erreur : L'email est déjà utilisé pour un compte.")
         return redirect("/register")
 
-    #Lors de la création du compte les mot de passe doivent etre identique
     if mot_de_passe != c_mot_de_passe:
         flash("Erreur : Les mots de passe ne correspondent pas.")
         return redirect("/register")
-    
-    #Si tous les tests sont bon, ajoute une personne dans la bdd et renvoie vers la page /eleve/accueil, 
-    #on considere qu'une personne qui creer sont compte est eleve
-    bdd.ajouter_personne(nom_utilisateur, prenom_utilisateur, email, mot_de_passe)
+
+    bdd.ajouter_personne(nom_utilisateur, prenom_utilisateur, nom_classes, email, mot_de_passe)
     return redirect("/eleve/accueil")
 
+
+# Page pour l'easter egg
 @app.route("/egg")
 def egg():
-    #easter egg
+    # easter egg
     return render_template("easter_egg.html")
 
 

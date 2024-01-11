@@ -66,6 +66,18 @@ input[type=text],input[type="email"],input[type="password"]{
     background: rgba(133, 133, 133, 0.365);
 }
 
+input[type=liste]{
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 5px 0 30px 0;
+    border: none;
+    border-radius: 25px;
+    background: rgba(133, 133, 133, 0.365);
+}
+
 
 input[type=submit]{
     width: 100%;
