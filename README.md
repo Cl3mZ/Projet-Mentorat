@@ -1,6 +1,6 @@
 Projet Mentorat
 
-Site pour le mentorat du lycée saint andrée
+Site pour le mentorat du lycée Saint André, Niort
 
 TODO LIST :
 
